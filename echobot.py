@@ -1,6 +1,19 @@
 import streamlit as st
 import numpy as np
 
+# Streamed response emulator
+def response_generator():
+    response = random.choice(
+        [
+            "Hello there! How can I assist you today?",
+            "Hi, human! Is there anything I can help you with?",
+            "Do you need help?",
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
+
 # with st.chat_message("user"):  # should be from the person or user side
 #    st.write("Hello 👋") 
  
@@ -13,7 +26,7 @@ import numpy as np
 # if prompt:
 #    st.write(f"User has sent the following prompt: {prompt}")
 
-st.title("Echo Bot")
+st.title("Simple Bot")
 
 # Initialize chat history
 if "messages" not in st.session_state:
